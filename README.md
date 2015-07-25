@@ -5,7 +5,6 @@ The circuit design is fairly simple as most of the parts can be sourced from the
 with Arduino boards. The only piece that I bought seperately was the DHT22 from SparkFun.
 
 # To Do:
-Fritzing schematics to be completed and updated.
 Add dewpoint calculation.
 add formula to average out two readings to minimize instant fluctuations in readings.
 
