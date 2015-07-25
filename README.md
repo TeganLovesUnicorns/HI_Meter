@@ -9,6 +9,10 @@ Fritzing schematics to be completed and updated.
 Add dewpoint calculation.
 add formula to average out two readings to minimize instant fluctuations in readings.
 
+#ChangeLog
+- added schematics and Fritzing file.
+- first commit of arduino file.
+
 
 
 Coded for the Arduino IDE 1.6.4
