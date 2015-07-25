@@ -10,6 +10,7 @@ Add dewpoint calculation.
 add formula to average out two readings to minimize instant fluctuations in readings.
 
 #ChangeLog
+- added if-statement for humidity calculations. NOAA says that erronious readings occure below 80F and 40% Relative Humidity.
 - added schematics and Fritzing file.
 - first commit of arduino file.
 
