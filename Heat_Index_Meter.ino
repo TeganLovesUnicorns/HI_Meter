@@ -1,7 +1,7 @@
 //Using an Arduino R3 a DHT22, a 16x2 LCD screen to read the sensor results and calculate the Heat Index
 //Author: Daniel R.
-//Version: 1.0
-//Date: 2015-07-21
+//Version: 1.0.1
+//Date: 2015-07-25
 
 
 #include <LiquidCrystal.h>  // Arduino's standard library
@@ -68,12 +68,14 @@ void setup() {
    lcd.clear();
 }
 
-void loop() {
-  
+void loop() {  
     float Humidity =    (dht.readHumidity()); //Read the DHT humidity sensor
     float Temperature = (dht.readTemperature()* 9.0 / 5.0 + 32.0); //Read the DHT Temp, convert C to F 
     float HI =          (heatIndex(Temperature, Humidity));
-    
+//NOAA says that air temps outside of 80*F and a RH of 40%
+//The if statement is to  reflect that.
+  if (Temperature > 80 and Humidity > 40)
+  {
     lcd.setCursor(0,0);
     lcd.print("HI: ");
     lcd.print(HI);
@@ -88,8 +90,25 @@ void loop() {
     Serial.print(Humidity);
     Serial.print(",");
     Serial.println(HI);
-    
-    
+    lcd.clear();
+  } 
+  else
+  { 
+    lcd.setCursor(0,0);
+    lcd.print("INDEX NOMINAL");
+    lcd.setCursor(0,1);
+    lcd.print(Temperature);
+    lcd.print(" F ");
+    lcd.print(Humidity);
+    lcd.print("%");
+    Serial.print(Temperature);
+    Serial.print(",");
+    Serial.print(Humidity);
+    Serial.print(",");
+    Serial.println(Temperature);
+    lcd.clear();
+  } 
+
     delay(10000);//slow it down for reading and not having a million data points
     
 }
