@@ -1,6 +1,6 @@
 //Using an Arduino R3 a DHT22, a 16x2 LCD screen to read the sensor results and calculate the Heat Index
 //Author: Daniel R.
-//Version: 1.0.1
+//Version: 1.1.0
 //Date: 2015-07-25
 
 
@@ -76,6 +76,7 @@ void loop() {
 //The if statement is to  reflect that.
   if (Temperature > 80 and Humidity > 40)
   {
+    lcd.clear();
     lcd.setCursor(0,0);
     lcd.print("HI: ");
     lcd.print(HI);
@@ -90,10 +91,10 @@ void loop() {
     Serial.print(Humidity);
     Serial.print(",");
     Serial.println(HI);
-    lcd.clear();
   } 
   else
   { 
+    lcd.clear();
     lcd.setCursor(0,0);
     lcd.print("INDEX NOMINAL");
     lcd.setCursor(0,1);
@@ -106,7 +107,6 @@ void loop() {
     Serial.print(Humidity);
     Serial.print(",");
     Serial.println(Temperature);
-    lcd.clear();
   } 
 
     delay(10000);//slow it down for reading and not having a million data points
